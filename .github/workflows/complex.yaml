@@ -3,7 +3,7 @@ name: complex
 on: push
 
 jobs:
-    job1:
+    ubuntu:
         name: First Job
         runs-on: ubuntu-latest
         steps:
@@ -12,7 +12,7 @@ jobs:
         - name: Print Date
           run: date "+%Y-%m-%d %H:%M:%S"
             
-    job2:
+    windows:
         name: Second job
         runs-on: windows-latest
         steps:
@@ -21,7 +21,7 @@ jobs:
         - name: Print Date
           run: Get-Date  # Prints date in PowerShell on Windows
           shell: powershell
-    job3:
+    macos:
         name: Third Job
         runs-on: macos-latest
         steps:
@@ -30,8 +30,8 @@ jobs:
         - name: Print Date
           run: date
             
-    job4:
-        needs: [job1, job2]
+    depends:
+        needs: [ubuntu, windows, macos]
         name: Fourth job
         runs-on: windows-latest
         steps:
