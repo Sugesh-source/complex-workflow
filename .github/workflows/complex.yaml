@@ -1,0 +1,43 @@
+name: complex
+
+on: push
+
+jobs:
+    job1:
+        name: First Job
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+        - name: Print Date
+          run: date "+%Y-%m-%d %H:%M:%S"
+            
+    job2:
+        name: Second job
+        runs-on: windows-latest
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+        - name: Print Date
+          run: Get-Date  # Prints date in PowerShell on Windows
+          shell: powershell
+    job3:
+        name: Third Job
+        runs-on: macos-latest
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v2
+        - name: Print Date
+          run: date
+            
+    job4:
+        needs: [job1, job2]
+        name: Fourth job
+        runs-on: windows-latest
+        steps:
+        - name: Step one
+          uses: actions/checkout@v2
+        - name: Step two
+          run: Get-Date  # Prints date in PowerShell on Windows
+          shell: powershell
+          
