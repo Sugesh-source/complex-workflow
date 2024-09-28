@@ -29,6 +29,6 @@ jobs:
         needs: [ubuntu, windows, macos]
         runs-on: windows-latest
         steps:
-          - run: Get-Date  # Prints date in PowerShell on Windows
-          - shell: powershell
+          - run: dates
+        
           
