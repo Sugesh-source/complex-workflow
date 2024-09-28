@@ -19,25 +19,16 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v2
         - name: Print Date
-          run: Get-Date  # Prints date in PowerShell on Windows
-          shell: powershell
+          run: date  
     macos:
-        name: Third Job
         runs-on: macos-latest
         steps:
-        - name: Checkout repository
-          uses: actions/checkout@v2
-        - name: Print Date
-          run: date
+        - run: date
             
     depends:
         needs: [ubuntu, windows, macos]
-        name: Fourth job
         runs-on: windows-latest
         steps:
-        - name: Step one
-          uses: actions/checkout@v2
-        - name: Step two
-          run: Get-Date  # Prints date in PowerShell on Windows
-          shell: powershell
+          - run: Get-Date  # Prints date in PowerShell on Windows
+          - shell: powershell
           
